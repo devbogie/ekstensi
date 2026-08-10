@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Blokir akses langsung ke file & folder sensitif (jika document root = root proyek)
+    RewriteRule ^\. - [F,L]
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests|vendor)(/|$) - [F,L,NC]
+    RewriteRule ^(artisan|composer\.json|composer\.lock|package\.json|package-lock\.json|vite\.config\.js|phpunit\.xml|\.env\.example|\.editorconfig|\.gitattributes|\.gitignore|README\.md|server\.php)$ - [F,L,NC]
+</IfModule>
+
+Options -Indexes
