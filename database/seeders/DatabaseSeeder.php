@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         if (! User::where('username', 'admin')->exists()) {
-            $password = Str::password(20);
+            $password = 'password';
 
             User::create([
                 'name' => 'Administrator',
@@ -28,19 +28,19 @@ class DatabaseSeeder extends Seeder
             $this->command?->info("Akun admin dibuat. Username: admin | Password: {$password}");
         }
 
-        $departments = ['IT & Telekomunikasi', 'Finance & Accounting', 'HRD & General Affair'];
+        $departments = ['IT', 'Accounting', 'HRD'];
 
         foreach ($departments as $name) {
             Department::firstOrCreate(['name' => $name]);
         }
 
-        $floors = ['Lantai 1', 'Lantai 2', 'Lantai 3'];
+        $floors = ['Lantai 1', 'Lantai 2', 'Lantai 3', 'Lantai 4', 'Lantai 5', 'Basement'];
 
         foreach ($floors as $name) {
             Floor::firstOrCreate(['name' => $name]);
         }
 
-        $branches = ['Head Office', 'Cabang Surabaya'];
+        $branches = ['RSU', 'RSIA'];
 
         foreach ($branches as $name) {
             Branch::firstOrCreate(['name' => $name]);
