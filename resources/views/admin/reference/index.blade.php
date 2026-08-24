@@ -7,15 +7,15 @@
 @section('title', $title)
 
 @section('content')
-    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4">
+    <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3 mb-4">
         <div class="page-heading">
             <h1 class="mb-1">{{ $title }}</h1>
             <p class="lead mb-0">Kelola data {{ mb_strtolower($title) }} yang dipakai pada ekstensi.</p>
         </div>
 
-        <button type="button" class="btn btn-primary btn-sm d-inline-flex align-items-center gap-1"
+        <button type="button" class="btn btn-primary d-inline-flex align-items-center justify-content-center gap-1 btn-add-ref flex-shrink-0"
             id="btn-add-item">
-            <i class="bi bi-plus-lg"></i>Tambah {{ mb_strtolower($singular) }}
+            <i class="bi bi-plus-lg"></i><span>Tambah {{ $singular }}</span>
         </button>
     </div>
 
@@ -47,21 +47,21 @@
             <div class="modal-content">
                 <form id="item-form" novalidate>
                     <div class="modal-header">
-                        <h2 class="modal-title" id="item-modal-title">Tambah {{ mb_strtolower($singular) }}</h2>
+                        <h2 class="modal-title mb-0" id="item-modal-title">Tambah {{ $singular }}</h2>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                     </div>
                     <div class="modal-body">
                         <input type="hidden" name="id">
 
                         <div class="mb-2">
-                            <label class="form-label" for="item-name">Nama</label>
+                            <label class="form-label" for="item-name">Nama {{ $singular }}</label>
                             <input type="text" class="form-control" id="item-name" name="name" required
-                                maxlength="255" placeholder="cth: {{ $singular }}" autocomplete="off">
+                                maxlength="255" placeholder="cth: {{ $singular == 'Lantai' ? 'Lantai 1' : ($singular == 'Departemen' ? 'Keuangan' : 'Cabang Utama') }}" autocomplete="off">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary btn-sm">
+                        <button type="button" class="btn btn-outline-secondary btn-sm px-3" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary btn-sm px-3">
                             <i class="bi bi-check-lg me-1"></i>Simpan
                         </button>
                     </div>
@@ -79,14 +79,14 @@
                         style="width:52px;height:52px;border-radius:16px;background:#fef2f2;border:1px solid #fecaca;color:#dc2626;display:inline-flex;align-items:center;justify-content:center;font-size:1.35rem">
                         <i class="bi bi-trash3"></i>
                     </div>
-                    <h3 class="mb-1" style="font-size:1rem;font-weight:650">Hapus data ini?</h3>
+                    <h3 class="mb-1" style="font-size:1rem;font-weight:650">Hapus {{ mb_strtolower($singular) }} ini?</h3>
                     <p class="mb-0" style="font-size:.85rem;color:var(--app-text-muted)" id="delete-modal-text">
                         Tindakan ini tidak dapat dibatalkan.
                     </p>
                 </div>
                 <div class="modal-footer justify-content-center border-0 pt-0 pb-4">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-danger btn-sm" id="btn-confirm-delete">
+                    <button type="button" class="btn btn-outline-secondary btn-sm px-3" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-danger btn-sm px-3" id="btn-confirm-delete">
                         <i class="bi bi-trash3 me-1"></i>Ya, Hapus
                     </button>
                 </div>
@@ -98,7 +98,7 @@
 @push('scripts')
     <script>
         const resource = '{{ $resource }}';
-        const singular = '{{ mb_strtolower($singular) }}';
+        const singular = '{{ $singular }}';
         const region = document.querySelector('#reference-region');
         const toolbar = document.querySelector('#reference-toolbar');
         const searchInput = document.querySelector('#reference-search');

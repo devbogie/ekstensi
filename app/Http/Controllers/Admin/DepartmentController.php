@@ -20,4 +20,9 @@ class DepartmentController extends ReferenceController
     {
         return 'Departemen';
     }
+
+    protected function icon(): string
+    {
+        return 'bi-diagram-3';
+    }
 }

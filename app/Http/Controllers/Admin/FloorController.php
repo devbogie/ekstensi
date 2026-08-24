@@ -20,4 +20,9 @@ class FloorController extends ReferenceController
     {
         return 'Lantai';
     }
+
+    protected function icon(): string
+    {
+        return 'bi-layers';
+    }
 }

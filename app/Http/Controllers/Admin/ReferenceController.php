@@ -16,11 +16,17 @@ abstract class ReferenceController extends Controller
 
     abstract protected function pluralLabel(): string;
 
+    protected function icon(): string
+    {
+        return 'bi-folder2';
+    }
+
     public function index(Request $request)
     {
         return view('admin.reference.index', [
             'title' => $this->pluralLabel(),
             'singular' => $this->singularLabel(),
+            'icon' => $this->icon(),
             'items' => $this->query($request)->paginate(10)->withQueryString(),
         ]);
     }
@@ -29,6 +35,7 @@ abstract class ReferenceController extends Controller
     {
         return view('admin.reference.partials.table', [
             'singular' => $this->singularLabel(),
+            'icon' => $this->icon(),
             'items' => $this->query($request)->paginate(10)->withQueryString(),
         ]);
     }

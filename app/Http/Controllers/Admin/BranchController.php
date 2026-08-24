@@ -20,4 +20,9 @@ class BranchController extends ReferenceController
     {
         return 'Cabang';
     }
+
+    protected function icon(): string
+    {
+        return 'bi-buildings';
+    }
 }

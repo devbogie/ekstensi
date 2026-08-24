@@ -1261,6 +1261,32 @@ input[type="search"]::-webkit-search-cancel-button {
     .page-heading {
         width: 100%;
     }
+
+    .btn-add-ref {
+        width: 100%;
+        min-height: 42px;
+        font-weight: 600;
+    }
+
+    .ref-mobile-card {
+        padding: 0.85rem 0.95rem !important;
+    }
+
+    .ref-card-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        font-size: 1.15rem;
+    }
+
+    .ref-card-title {
+        font-size: 0.925rem;
+    }
+
+    .ref-count-pill {
+        font-size: 0.72rem;
+        padding: 0.18rem 0.5rem;
+    }
 }
 
 /* Tablet (576px–991px): kontrol toolbar tetap berdampingan dua kolom */
@@ -1285,4 +1311,153 @@ input[type="search"]::-webkit-search-cancel-button {
     .page-heading h1 {
         font-size: 1.2rem;
     }
+
+    .ref-card-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 9px;
+        font-size: 1.05rem;
+    }
+
+    .ref-card-title {
+        font-size: 0.875rem;
+    }
+}
+
+/* ---------- Reference UI (Departemen, Lantai, Cabang) ---------- */
+
+.ref-heading-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: var(--app-primary-soft, #f0fdfa);
+    border: 1px solid var(--bs-primary-soft-border, #99f6e4);
+    color: var(--bs-primary);
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.ref-modal-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--app-primary-soft, #f0fdfa);
+    border: 1px solid var(--bs-primary-soft-border, #99f6e4);
+    color: var(--bs-primary);
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.ref-table-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid var(--app-border);
+    color: var(--bs-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.ref-list-card {
+    border: 1px solid var(--app-border);
+    border-radius: var(--app-radius-lg);
+    background: var(--app-surface);
+    box-shadow: var(--app-shadow-sm);
+    overflow: hidden;
+}
+
+.ref-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.85rem;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--app-border);
+    transition: background-color 0.12s ease;
+    background: var(--app-surface);
+}
+
+.ref-list-item:last-child {
+    border-bottom: 0;
+}
+
+.ref-list-item:hover {
+    background-color: #fafbfc;
+}
+
+.ref-list-item:active {
+    background-color: #f3f4f6;
+}
+
+.ref-item-content {
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.ref-item-info {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem; /* Jarak proporsional antara Nama dan Badge */
+}
+
+.ref-item-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111827;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ref-item-meta {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+}
+
+.ref-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.22rem 0.6rem;
+    border-radius: 6px;
+    background: var(--app-primary-soft, #f0fdfa);
+    border: 1px solid #ccfbf1;
+    color: var(--bs-primary-darker);
+    line-height: 1.2;
+    width: fit-content;
+}
+
+.ref-badge-pill.ref-badge-empty {
+    background: #f3f4f6;
+    border-color: #e5e7eb;
+    color: var(--app-text-muted);
+}
+
+.ref-badge-pill .bi {
+    font-size: 0.72rem;
+}
+
+.ref-list-item .actions-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-shrink: 0;
+}
+
+.btn-add-ref {
+    padding: 0.45rem 0.9rem;
+    font-weight: 550;
+    font-size: 0.875rem;
+    border-radius: var(--app-radius);
+    box-shadow: 0 1px 2px rgba(13, 148, 136, 0.2);
 }
