@@ -4,6 +4,9 @@ services:
       context: .
       dockerfile: docker/php/Dockerfile
     restart: unless-stopped
+    env_file:
+      - path: .env.docker
+        required: false
     volumes:
       - app-storage:/var/www/html/storage/app
     depends_on:

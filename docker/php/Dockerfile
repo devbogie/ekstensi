@@ -42,16 +42,14 @@ RUN { \
 WORKDIR /var/www/html
 COPY . .
 
-COPY .env.docker .env
-
 RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader \
+    && cp docker/php/entrypoint.sh /usr/local/bin/app-entrypoint.sh \
+    && chmod +x /usr/local/bin/app-entrypoint.sh \
     && chown -R www-data:www-data /var/www/html \
     && su www-data -s /bin/bash -c "php artisan storage:link" \
-    && php artisan config:cache \
-    && php artisan route:cache \
-    && php artisan view:cache \
     && chmod -R 775 storage bootstrap/cache
 
 EXPOSE 9000
 
+ENTRYPOINT ["app-entrypoint.sh"]
 CMD ["php-fpm"]
